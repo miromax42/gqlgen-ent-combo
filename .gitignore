@@ -1,3 +1,10 @@
+# ent
+ent/**
+!ent/entc.go
+!ent/schema
+# gqlgen
+graph/generated
+# generated
 .task/**
 .idea/**
 .vscode/*
