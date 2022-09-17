@@ -1,7 +1,7 @@
 # ent
 ent/**
 !ent/entc.go
-!ent/schema
+!ent/schema/
 # gqlgen
 graph/generated
 # generated

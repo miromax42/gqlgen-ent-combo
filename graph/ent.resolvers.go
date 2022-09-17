@@ -5,7 +5,6 @@ package graph
 
 import (
 	"context"
-	"fmt"
 
 	"gqlgen-ent-combo/ent"
 	"gqlgen-ent-combo/graph/generated"
@@ -23,7 +22,11 @@ func (r *queryResolver) Nodes(ctx context.Context, ids []int) ([]ent.Noder, erro
 
 // Tasks is the resolver for the tasks field.
 func (r *queryResolver) Tasks(ctx context.Context, after *ent.Cursor, first *int, before *ent.Cursor, last *int, orderBy *ent.TaskOrder, where *ent.TaskWhereInput) (*ent.TaskConnection, error) {
-	panic(fmt.Errorf("not implemented: Tasks - tasks"))
+	return r.client.Task.Query().
+		Paginate(ctx, after, first, before, last,
+			ent.WithTaskOrder(orderBy),
+			ent.WithTaskFilter(where.Filter),
+		)
 }
 
 // Users is the resolver for the users field.
